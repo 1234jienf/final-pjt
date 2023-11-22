@@ -272,6 +272,19 @@ export const useCounterStore = defineStore('counter', () => {
       })
   }
 
+  const recommendedProducts = ref([])
+
+  const getRecommendedProducts = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/user/recommend/`, {
+        headers: { Authorization: `Token ${token.value}` },
+      })
+      recommendedProducts.value = response.data.recommended_products
+    } catch(error) {
+      console.error(error)
+    }
+  }
+
 
   return { 
     boards,
@@ -295,6 +308,8 @@ export const useCounterStore = defineStore('counter', () => {
     convertToKOR,
     getUserChart,
     userProduct,
-    updateUserInfo
+    updateUserInfo, 
+    recommendedProducts,
+    getRecommendedProducts,
   }
 }, {persist: true})

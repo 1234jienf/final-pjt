@@ -13,6 +13,7 @@ import DepositView from '@/views/DepositView.vue'
 import DepositDetailView from '@/views/DepositDetailView.vue'
 import SavingDetailView from '@/views/SavingDetailView.vue'
 import KakaomapView from '@/views/KakaomapView.vue'
+import RecommendedProductsView from '@/views/RecommendedProductsView.vue';
 import { useCounterStore } from '../stores/counter'
 
 
@@ -90,7 +91,12 @@ const router = createRouter({
       path: '/kakaomapview',
       name: 'KakaomapView',
       component: KakaomapView
-    }
+    },
+    {
+      path: '/recommended-products',
+      name: 'RecommendedProductsView',
+      component: RecommendedProductsView,
+    },
   ],
 
 })

@@ -67,6 +67,9 @@
       <h2>가입한 상품 금리</h2>
       <canvas id="myChart"></canvas>
     </div>
+    <div>
+      <router-link to="/recommended-products">추천 상품 보러 가기</router-link>
+    </div>
   </div>
 </template>
 
@@ -74,6 +77,8 @@
 import { useCounterStore } from '@/stores/counter';
 import { onMounted, ref } from 'vue';
 import Chart from 'chart.js/auto';
+
+
 
 const store = useCounterStore();
 const editingField = ref([null])

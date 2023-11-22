@@ -76,10 +76,11 @@ def recommend_products(request):
 
     recommender = CollaborativeFilteringRecommender()
     recommended_products = recommender.recommend_products(user_profile, all_user_profiles)
-
+    print(recommended_products)
     serializer = UserSerializer(user_profile)
+    # print(serializer)
     data = {
-        'user_profile': serializer.data,
         'recommended_products': recommended_products
     }
+    # print(data)
     return Response(data)
