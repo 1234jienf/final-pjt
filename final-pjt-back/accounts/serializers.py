@@ -7,15 +7,12 @@ from .models import User
 
 
 class CustomRegisterSerializer(RegisterSerializer):
-    nickname = serializers.CharField(
-        required=False,
-        allow_blank=True,
-        max_length=255
-    )
-    age = serializers.IntegerField(required=False)
-    money = serializers.IntegerField(required=False)
-    salary = serializers.IntegerField(required=False)
-    financial_products = serializers.CharField(required=False)
+    email = serializers.EmailField(required=False, allow_blank=True, allow_null=True)
+    nickname = serializers.CharField(required=False, allow_blank=True, allow_null=True, max_length=255)
+    age = serializers.IntegerField(required=False, allow_null=True)
+    money = serializers.IntegerField(required=False, allow_null=True)
+    salary = serializers.IntegerField(required=False, allow_null=True)
+    financial_products = serializers.CharField(required=False, allow_blank=True)
 
     def get_cleaned_data(self):
         return {
