@@ -7,4 +7,5 @@ urlpatterns = [
     path('user/chart/', views.profile_chart, name='profilechart'),
     path('user/update/', views.update, name='update'),
     path('user/recommend/', views.recommend_products, name='recommend_products'),
+    path('user/mbti_recommend/', views.mbti_recommend, name='mbti_recommend_products'),
 ]

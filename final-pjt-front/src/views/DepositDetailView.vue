@@ -16,58 +16,48 @@
         현재 가입중인 상품:
         {{ store.userInfo.financial_products }}
       </div>
-      <button v-if="isJoined" class="join-button" @click="handleJoinButtonClick">가입해지</button>
-      <button v-else class="join-button" @click="handleJoinButtonClick">가입하기</button>    </div>
+      <button v-if="isJoined" class="join-button" @click="joinDeposit()">가입해지</button>
+      <button v-else class="join-button" @click="joinDeposit()">가입하기</button>    
+    </div>
   </div>
 </template>
 
 <script setup>
 import axios from 'axios';
-import { ref, onMounted,computed } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useCounterStore } from '@/stores/counter';
 import { useRoute } from 'vue-router';
 
 const store = useCounterStore();
 const depositDetail = ref(null);
-const route = useRoute()
-
+const route = useRoute();
 
 const getUserProductIds = () => {
-  const products = store.userInfo.financial_products || '';
-  console.log(products)
-  return products.split(',').map(id => id.trim());
+  return (store.userInfo.financial_products || '').split(',').map(id => id.trim());
 };
 
-// 해당 상품이 이미 가입되어 있는지 확인하는 함수
 const isProductAlreadyJoined = (productId) => {
   const joinedProducts = getUserProductIds();
   return joinedProducts.includes(productId);
 };
 
-
 const handleJoinButtonClick = (productId) => {
-  if (isProductAlreadyJoined(productId)) {
-    // 이미 가입되어 있는 상품이라면 해지 로직 실행
+  if (!isProductAlreadyJoined(productId)) {
+    const updatedProducts = `${store.userInfo.financial_products || ''},${productId}`;
+    store.updateUserInfo('financial_products', updatedProducts);
+    console.log('해당 상품 가입:', productId);
+  } else {
     const updatedProducts = getUserProductIds().filter(id => id !== productId).join(',');
     store.updateUserInfo('financial_products', updatedProducts);
     console.log('해당 상품 해지:', productId);
-    // 필요한 처리 또는 UI 변경
-  } else {
-    // 가입 로직 실행
-    const updatedProducts = (store.userInfo.financial_products || '') + ',' + productId;
-    store.updateUserInfo('financial_products', updatedProducts);
-    console.log('해당 상품 가입:', productId);
-    // 필요한 처리 또는 UI 변경
   }
 };
 
-// 가입 버튼 클릭 이벤트에 handleJoinButtonClick 함수 연결
 const joinDeposit = () => {
   const productId = route.params.fin_prdt_cd;
   handleJoinButtonClick(productId);
 };
 
-// 기존의 fetchDepositDetail 함수에서 joinDeposit를 호출하는 부분을 수정
 const fetchDepositDetail = async () => {
   const productId = route.params.fin_prdt_cd;
   
@@ -78,7 +68,6 @@ const fetchDepositDetail = async () => {
       }
     });
     depositDetail.value = response.data;
-    joinDeposit(); // 상품 상세 정보를 받아온 후에 가입 버튼 동작 수행
   } catch (error) {
     console.error('Error fetching deposit details:', error);
   }
@@ -92,6 +81,8 @@ const isJoined = computed(() => {
 onMounted(() => {
   fetchDepositDetail();
 });
+
+console.log(store.userInfo.financial_products)
 
 console.log(store.userInfo.financial_products)
 </script>

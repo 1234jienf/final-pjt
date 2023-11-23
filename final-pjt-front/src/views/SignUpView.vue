@@ -6,13 +6,29 @@
         <input type="text" v-model.trim="username" placeholder="UserName" class="input-field">
       </label>
       <label>
-        <input type="text" v-model.trim="email" placeholder="Email Address" class="input-field">
-      </label>
-      <label>
         <input type="password" v-model.trim="password1" placeholder="Password" class="input-field">
       </label>
       <label>
-        <input type="password" v-model.trim="password2" placeholder="Password Confirm" class="input-field">
+        <input type="password" v-model.trim="password2" placeholder="Password Confirm" class="input-field" @input="checkPasswordMatch">
+        <span v-if="passwordMismatch" style="color: red;">비밀번호가 일치하지 않습니다.</span>
+      </label>
+      <label>
+        <input type="text" v-model.trim="email" placeholder="Email Address" class="input-field">
+      </label>
+      <label>
+        <input type="nickname" v-model.trim="nickname" placeholder="nickname" class="input-field">
+      </label>
+      <label>
+        <input type="age" v-model.trim="age" placeholder="age" class="input-field">
+      </label>
+      <label>
+        <input type="money" v-model.trim="money" placeholder="money" class="input-field">
+      </label>
+      <label>
+        <input type="salary" v-model.trim="salary" placeholder="salary" class="input-field">
+      </label>
+      <label>
+        <input type="financial_products" v-model.trim="financial_products" placeholder="financial_products" class="input-field">
       </label>
       <button class="red" type="submit">SIGN IN</button>
     </form>
@@ -28,13 +44,34 @@ const username = ref(null)
 const email = ref(null)
 const password1 = ref(null)
 const password2 = ref(null)
+const nickname = ref(null)
+const age = ref(null)
+const money = ref(null)
+const salary = ref(null)
+const financial_products = ref(null)
+
+
+const passwordMismatch = ref(false);
+
+const checkPasswordMatch = function() {
+  if (password1.value !== password2.value) {
+    passwordMismatch.value = true;
+  } else {
+    passwordMismatch.value = false;
+  }
+}
 
 const signUp = function() {
   const payload = {
     username: username.value,
     email: email.value,
     password1: password1.value,
-    password2: password2.value
+    password2: password2.value,
+    nickname: nickname.value,
+    age: parseInt(age.value),
+    money: parseInt(money.value),
+    salary: parseInt(salary.value),
+    financial_products:financial_products.value
   }
   store.signUp(payload)
 }

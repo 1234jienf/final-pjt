@@ -14,6 +14,8 @@ import DepositDetailView from '@/views/DepositDetailView.vue'
 import SavingDetailView from '@/views/SavingDetailView.vue'
 import KakaomapView from '@/views/KakaomapView.vue'
 import RecommendedProductsView from '@/views/RecommendedProductsView.vue';
+import MbtiRecommendView from '@/views/MbtiRecommendView.vue';
+import SurveyView from '@/views/SurveyView.vue'
 import { useCounterStore } from '../stores/counter'
 
 
@@ -93,9 +95,19 @@ const router = createRouter({
       component: KakaomapView
     },
     {
-      path: '/recommended-products',
+      path: '/surveyview',
+      name: 'SurveyView',
+      component: SurveyView,
+    },
+    {
+      path: '/recommend',
       name: 'RecommendedProductsView',
       component: RecommendedProductsView,
+    },
+    {
+      path: '/mbti',
+      name: 'MbtiRecommendView',
+      component: MbtiRecommendView,
     },
   ],
 

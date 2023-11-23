@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="calculator">
     <h1>환율 계산기 (타국 통화 변환)</h1>
     <div>
       <label for="amount">금액:</label>
@@ -13,10 +14,11 @@
     </select>
 
     <button @click="handleConversion">환전</button>
-
+    </div>
+    <div>
     <p>{{ exchangeRateData.convertedAmount }} 원</p>
   </div>
-  <div>
+  <div class="calculator">
     <h1>환율 계산기 (원화 변환)</h1>
     <div>
       <label for="korAmount">금액:</label>
@@ -33,6 +35,7 @@
 
     <p>{{ exchangeRateDataKor.convertedAmount }} {{ selectedCurrencyKor }}</p>
   </div>
+</div>
 </template>
 
 <script setup>
@@ -95,8 +98,16 @@ onMounted(async () => {
   await store.setCurrencies();
   console.log("exchangeRateData:", exchangeRateData);
 });
+
+
 </script>
 
-<style>
-  /* 스타일 추가 */
+<style scoped>
+.calculator {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
 </style>

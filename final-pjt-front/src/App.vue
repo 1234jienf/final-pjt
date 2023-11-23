@@ -32,6 +32,7 @@
       <RouterLink :to="{ name: 'CalculatorView' }" class="nav-link btn-2">환율 계산기</RouterLink>
       <RouterLink :to="{ name: 'KakaomapView' }" class="nav-link btn-2">지도보기</RouterLink>
       <RouterLink :to="{ name: 'BoardView' }" class="nav-link btn-2">커뮤니티</RouterLink>
+      <RouterLink :to="{ name: 'SurveyView' }" class="nav-link btn-2">성향검사</RouterLink>
     </nav>
   </header>
   <RouterView />
@@ -80,13 +81,33 @@ window.addEventListener('click', (e) => {
 /* Dropdown styles */
 .dropdown {
   background-color: #EAEFFE;
-  min-width: 160px;
+  height: 40px;
   display: none; /* Initially hide the dropdown */
   transition: opacity 0.5s ease; /* 투명도 변화에 대한 transition 추가 */
   opacity: 0; /* 처음에는 숨겨진 상태로 설정 */
   pointer-events: none; /* 숨겨진 상태에서 이벤트 비활성화 */
   font-weight: bold;
+  box-shadow:
+    inset 0 0 0 5px rgba(255, 255, 255, 0.6),
+    inset 100px 100px 0 0px #526ADF,
+    inset 200px 200px 0 0px #784ba8,
+    inset 300px 300px 0 0px #526ADF;
+ 
+}
 
+
+.card {
+  width: 400px;
+  min-height: 250px;
+  background: rgba( 255, 255, 255, 0.15 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 18px );
+  -webkit-backdrop-filter: blur( 18px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border-radius: 1rem;
+  padding: 1.5rem;
+  z-index: 10;
+  color: whitesmoke;
 }
 
 .dropdown.active {
@@ -108,7 +129,12 @@ window.addEventListener('click', (e) => {
   transform: scale(1.1); /* 확대 효과 */
   color: black; /* 글자색 변경 */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+  height: 520px;
+  -webkit-filter: blur(0.1px);
+          filter: blur(0.3px);
+
 }
+
 
 .label-wrapper {
   display: flex;

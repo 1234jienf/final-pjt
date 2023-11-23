@@ -55,7 +55,15 @@ export const useCounterStore = defineStore('counter', () => {
   
 
   const signUp = function(payload) {
-    const { username, email, password1, password2 } = payload
+    const { username,
+      email, 
+      password1, 
+      password2,
+      nickname,
+      age,
+      money,
+      salary,
+      financial_products } = payload
 
     axios({
       method: 'post',
@@ -64,7 +72,12 @@ export const useCounterStore = defineStore('counter', () => {
         username,
         email,
         password1,
-        password2
+        password2,
+        nickname,
+        age,
+        money,
+        salary,
+        financial_products: financial_products || ""
       }
     })
       .then((res)=>{
@@ -272,19 +285,46 @@ export const useCounterStore = defineStore('counter', () => {
       })
   }
 
-  const recommendedProducts = ref([])
+  const recommendedData = ref({
+    recommended_products: ref([]),
+    companies: ref([]),
+    pd_names: ref([])
+  })
 
   const getRecommendedProducts = async () => {
     try {
-      const response = await axios.get(`${API_URL}/user/recommend/`, {
+      const response = await axios.get(`${API_URL}/accounts/user/recommend/`, {
         headers: { Authorization: `Token ${token.value}` },
       })
-      recommendedProducts.value = response.data.recommended_products
+      recommendedData.value.recommended_products = response.data.recommended_products
+      recommendedData.value.companies = response.data.companies
+      recommendedData.value.pd_names = response.data.pd_names
+      // console.log(recommendedData.value)
     } catch(error) {
       console.error(error)
     }
   }
+  const mbtiData = ref({
+    mbti: ref(''),
+    recommended_products: ref([]),
+    companies: ref([]),
+    pd_names: ref([])
+  })
 
+  const getmbtiRecommended = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/accounts/user/mbti_recommend/`, {
+        headers: { Authorization: `Token ${token.value}` },
+      })
+      mbtiData.value.mbti = response.data.mbti
+      mbtiData.value.recommended_products = response.data.recommended_products
+      mbtiData.value.companies = response.data.companies
+      mbtiData.value.pd_names = response.data.pd_names
+      console.log(mbtiData.value)
+    } catch(error) {
+      console.error(error)
+    }
+  }
 
   return { 
     boards,
@@ -309,7 +349,9 @@ export const useCounterStore = defineStore('counter', () => {
     getUserChart,
     userProduct,
     updateUserInfo, 
-    recommendedProducts,
+    recommendedData,
     getRecommendedProducts,
+    mbtiData,
+    getmbtiRecommended,
   }
 }, {persist: true})
