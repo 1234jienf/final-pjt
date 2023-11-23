@@ -80,103 +80,100 @@
     </div>
   </template>
   
-<script>
-  export default {
-    data() {
-      return {
-        firstInvestmentAnswer: [],
-        lossSituation: '',
-        savingsAccountAnswer: '',
-        lossHandlingAnswer: '',
-        unexpectedProfitAnswer: '',
-        preferredFriends: '',
-        investmentProductAnswer: '', // 이 변수를 추가
-        investmentApproach: '',
-        firstInvestmentOptions: [
-          { label: '스스로 찾아보고 판단', value: 'TJ' },
-          { label: '투자를 통해 남들보다 높은 수익을 내고 싶어서', value: 'ES' },
-          { label: '주변 사람들의 이야기를 듣고 따라하게 됨', value: 'SFP' },
-          { label: '투자에 대한 호기심', value: 'NT' },
-          { label: '검증된 투자 수익률 정보를 보고', value: 'STJ' },
-        ],
-        lossOptions: [
-          { label: '바로 계약 해지', value: 'J' },
-          { label: '한 두 달 더 지켜본다', value: 'TJ' },
-          { label: '6개월 더 지켜본다', value: 'P' },
-          { label: '장기적으로 투자하는 거라 큰 걱정하지 않는다', value: 'SP' },
-          { label: '수익률이 하락했을때보다 조금씩 더 투자', value: 'SJ' },
-          // 다른 선택지들을 추가해주세요
-        ],
-        friendOptions: [
-          { label: '내 투자에 어떤 문제가 있는지 명확하게 설명해줄 수 있는 친구', value: 'STJ' },
-          { label: '내 불만과 투정을 다 받아주는 친구', value: 'EF' },
-          { label: '본인도 손해를 본 적 있다며 위로 해주는 친구', value: 'F' },
-          { label: '손실을 만회할 방법을 같이 찾아봐주는 친구', value: 'ET' },
-          { label: '바로 기분 전환을 시켜주는 친구', value: 'EP' },
-          // 다른 선택지들을 추가해주세요
-        ],
-        savingsAccountOptions :[
-            { label: '동아리나 모임을 통해서 정보를 얻는다', value: 'ET' },
-            { label: '인터넷 검색 및 여러책을 보면서 나에게 알맞은 상품을 고려하고 가입한다', value: 'INT' },
-            { label: '귀찮은건 질색! 대충 내 눈에 좋아보이는거 가입한다', value: 'IP' },
-            { label: '은행원이나 친구에게 추천받아서 가입한다.', value: 'EP' },
-        ],
-        investmentProducts: [
-            { label: '60퍼 확률로 연 6퍼 수익 또는 40퍼 확률로 -2퍼 손실이 가능한 상품', value: 'SFJ' },
-            { label: '60퍼 확률로 연 11퍼 수익 또는 40퍼 확률로 -5퍼 손실이 가능한 상품', value: 'ES' },
-            { label: '60퍼 확률로 연 16퍼 수익 또는 40퍼 확률로 -8퍼 손실이 가능한 상품', value: 'F' },
-            { label: '60퍼 확률로 연 21퍼 수익 또는 40퍼 확률로 -11퍼 손실이 가능한 상품', value: 'TP' },
-            { label: '60퍼 확률로 연 26퍼 수익 또는 40퍼 확률로 -14퍼 손실이 가능한 상품', value: 'ESP' },
-        ],
-        unexpectedProfitOptions: [
-            { label: '이미 쓰기로 한곳에 먼저 지출', value: 'ST' },
-            { label: '그 날 기분에 따라 즉흥적으로 결정', value: 'P' },
-            { label: '주변사람들에게 한턱 쏘면서 함께 즐김', value: 'E' },
-            { label: '집이나 차, 명품 등 남들이 부러워할만한 걸 삼', value: 'EP' },
-            { label: '재투자할지 아니면 필요한데 쓸지 일단 고민부터 할듯', value: 'TJ' },
+<script setup>
+import { useCounterStore } from '../stores/counter';
+import { ref } from 'vue';
+const store = useCounterStore()
 
-        ],
-        investmentApproachOptions: [
-            { label: '목돈만 투자하고 오랫동안 지켜보기', value: 'IJ' },
-            { label: '목돈 먼저 투자 후, 매달 꾸준히 투자', value: 'SJ' },
-            { label: '목돈 먼저 투자후, 여유 생길때 마다', value: 'P' },
-            { label: '목돈은 없지만 매달 꾸준히', value: 'J' },
-            { label: '목돈은 없지만, 여유가 생길때마다 조금씩 투자', value: 'EJ' },
+const firstInvestmentAnswer = ref('');
+const lossSituation = ref('');
+const savingsAccountAnswer = ref('');
+const lossHandlingAnswer = ref('');
+const unexpectedProfitAnswer = ref('');
+const preferredFriends = ref('');
+const investmentProductAnswer = ref('');
+const investmentApproach = ref('');
 
-        ],
-        lossHandlingOptions: [
-            { label: '손실을 원하지 않아요(무조건 원금 보전)', value: 'SJ' },
-            { label: '원금의 5 퍼 까지 손실 ㄱㅊ', value: 'J' },
-            { label: '원금의 10퍼까지 손실 ㄱㅊ', value: 'TJ' },
-            { label: '원금의 15퍼까지 손실 ㄱㅊ', value: 'TFP' },
-            { label: '원금의 25퍼까지 손실 ㄱㅊ', value: 'TP' },
 
+const firstInvestmentOptions = [
+    { label: '스스로 찾아보고 판단', value: 'TJ' },
+    { label: '투자를 통해 남들보다 높은 수익을 내고 싶어서', value: 'ES' },
+    { label: '주변 사람들의 이야기를 듣고 따라하게 됨', value: 'SFP' },
+    { label: '투자에 대한 호기심', value: 'NT' },
+    { label: '검증된 투자 수익률 정보를 보고', value: 'STJ' },
+     ]
+const lossOptions = [
+    { label: '바로 계약 해지', value: 'J' },
+    { label: '한 두 달 더 지켜본다', value: 'TJ' },
+    { label: '6개월 더 지켜본다', value: 'P' },
+    { label: '장기적으로 투자하는 거라 큰 걱정하지 않는다', value: 'SP' },
+    { label: '수익률이 하락했을때보다 조금씩 더 투자', value: 'SJ' },
         ]
-      };
-    },
-    methods: {
-    submitSurvey() {
-        const mbtiCount = {
-      E: 0,
-      I: 0,
-      S: 0,
-      N: 0,
-      T: 0,
-      F: 0,
-      P: 0,
-      J: 0,
+const friendOptions = [
+    { label: '내 투자에 어떤 문제가 있는지 명확하게 설명해줄 수 있는 친구', value: 'STJ' },
+    { label: '내 불만과 투정을 다 받아주는 친구', value: 'EF' },
+    { label: '본인도 손해를 본 적 있다며 위로 해주는 친구', value: 'F' },
+    { label: '손실을 만회할 방법을 같이 찾아봐주는 친구', value: 'ET' },
+    { label: '바로 기분 전환을 시켜주는 친구', value: 'EP' },
+    ]
+const savingsAccountOptions = [
+    { label: '동아리나 모임을 통해서 정보를 얻는다', value: 'ET' },
+    { label: '인터넷 검색 및 여러책을 보면서 나에게 알맞은 상품을 고려하고 가입한다', value: 'INT' },
+    { label: '귀찮은건 질색! 대충 내 눈에 좋아보이는거 가입한다', value: 'IP' },
+    { label: '은행원이나 친구에게 추천받아서 가입한다.', value: 'EP' },
+    ]
+const investmentProducts =  [
+    { label: '60퍼 확률로 연 6퍼 수익 또는 40퍼 확률로 -2퍼 손실이 가능한 상품', value: 'SFJ' },
+    { label: '60퍼 확률로 연 11퍼 수익 또는 40퍼 확률로 -5퍼 손실이 가능한 상품', value: 'ES' },
+    { label: '60퍼 확률로 연 16퍼 수익 또는 40퍼 확률로 -8퍼 손실이 가능한 상품', value: 'F' },
+    { label: '60퍼 확률로 연 21퍼 수익 또는 40퍼 확률로 -11퍼 손실이 가능한 상품', value: 'TP' },
+    { label: '60퍼 확률로 연 26퍼 수익 또는 40퍼 확률로 -14퍼 손실이 가능한 상품', value: 'ESP' },
+]
+const unexpectedProfitOptions = [
+    { label: '이미 쓰기로 한곳에 먼저 지출', value: 'ST' },
+    { label: '그 날 기분에 따라 즉흥적으로 결정', value: 'P' },
+    { label: '주변사람들에게 한턱 쏘면서 함께 즐김', value: 'E' },
+    { label: '집이나 차, 명품 등 남들이 부러워할만한 걸 삼', value: 'EP' },
+    { label: '재투자할지 아니면 필요한데 쓸지 일단 고민부터 할듯', value: 'TJ' },
+
+]
+const investmentApproachOptions = [
+    { label: '목돈만 투자하고 오랫동안 지켜보기', value: 'IJ' },
+    { label: '목돈 먼저 투자 후, 매달 꾸준히 투자', value: 'SJ' },
+    { label: '목돈 먼저 투자후, 여유 생길때 마다', value: 'P' },
+    { label: '목돈은 없지만 매달 꾸준히', value: 'J' },
+    { label: '목돈은 없지만, 여유가 생길때마다 조금씩 투자', value: 'EJ' },
+]
+const lossHandlingOptions =  [
+    { label: '손실을 원하지 않아요(무조건 원금 보전)', value: 'SJ' },
+    { label: '원금의 5 퍼 까지 손실 ㄱㅊ', value: 'J' },
+    { label: '원금의 10퍼까지 손실 ㄱㅊ', value: 'TJ' },
+    { label: '원금의 15퍼까지 손실 ㄱㅊ', value: 'TFP' },
+    { label: '원금의 25퍼까지 손실 ㄱㅊ', value: 'TP' },
+]
+
+const submitSurvey = () => {
+  const mbtiCount = {
+    E: 0,
+    I: 0,
+    S: 0,
+    N: 0,
+    T: 0,
+    F: 0,
+    P: 0,
+    J: 0,
+  };
+
+const surveyResult = {
+    firstInvestmentAnswer: firstInvestmentAnswer.value || '', // ref로 변경된 변수 접근 방식
+    lossSituation: lossSituation.value || '',
+    savingsAccountAnswer: savingsAccountAnswer.value || '',
+    lossHandlingAnswer: lossHandlingAnswer.value || '',
+    unexpectedProfitAnswer: unexpectedProfitAnswer.value || '',
+    preferredFriends: preferredFriends.value || '',
+    investmentProductAnswer: investmentProductAnswer.value || '',
+    investmentApproach: investmentApproach.value || '',
     };
-    // 설문 결과를 서버로 보내는 로직 추가
-        const surveyResult = {
-            firstInvestmentAnswer: this.firstInvestmentAnswer || '',
-            lossSituation: this.lossSituation || '',
-            savingsAccountAnswer: this.savingsAccountAnswer || '',
-            lossHandlingAnswer: this.lossHandlingAnswer || '',
-            unexpectedProfitAnswer: this.unexpectedProfitAnswer || '',
-            preferredFriends: this.preferredFriends || '',
-            investmentProductAnswer: this.investmentProductAnswer || '',
-            investmentApproach: this.investmentApproach || '',
-        };
             // MBTI 유형에 해당하는 선택된 항목들의 개수 카운트
             for (const answer in surveyResult) {
 
@@ -218,10 +215,17 @@
     });
 
     console.log('최종 MBTI 결과:', mbtiResult);
+    sendDataToServer(mbtiResult);
+};
 
-      },
-    },
-  };
+const sendDataToServer = async (mbtiResult) => {
+  try {
+    await store.updateUserInfo('mbti', mbtiResult);
+  } catch (error) {
+    console.error('서버로 데이터 전송 중 에러 발생:', error);
+  }
+};
+
 
 /*
 ISTP,ENTP,ESFP,ESTP:

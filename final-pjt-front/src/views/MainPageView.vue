@@ -32,7 +32,9 @@
         <div class="box">
           <RouterLink :to="{ name: 'CalculatorView' }" class="nav-link btn-2">환율 계산기</RouterLink>
         </div>
-        <div class="box">금융상품 추천</div>
+        <div class="box">
+          <RouterLink :to="{ name: 'ProfileView' }" class="nav-link btn-2">금융상품추천받기</RouterLink>
+        </div>
         <div class="box">
           <RouterLink :to="{ name: 'KakaomapView' }" class="nav-link btn-2">지도보기</RouterLink>
         </div>
@@ -40,6 +42,11 @@
           <RouterLink :to="{ name: 'BoardView' }" class="nav-link btn-2">커뮤니티</RouterLink>
         </div>
       </div>
+      <div class="down-logo">
+      <button class="box">
+        <RouterLink :to="{ name: 'SurveyView' }" class="nav-link btn-2">내 MBTI로 금융상품 추천받기</RouterLink>
+      </button>
+    </div>
     </div>
   </div>
 

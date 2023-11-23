@@ -19,6 +19,8 @@ const pinia = createPinia();
 
 app.component('font-awesome-icon', FontAwesomeIcon);
 app.use(VueGoodTablePlugin);
+
+
 app.use(pinia);
 app.use(router);
 app.mount('#app');

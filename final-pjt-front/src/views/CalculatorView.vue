@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="calculator-container">
     <div class="calculator">
     <h1>환율 계산기 (타국 통화 변환)</h1>
     <div>
@@ -12,10 +12,7 @@
         {{ currency.cur_nm }}
       </option>
     </select>
-
     <button @click="handleConversion">환전</button>
-    </div>
-    <div>
     <p>{{ exchangeRateData.convertedAmount }} 원</p>
   </div>
   <div class="calculator">
@@ -103,11 +100,65 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.calculator {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 20px;
-  background-color: #f9f9f9;
-}
+  .calculator-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #EAEFFE;
+    height: 100vh;
+  }
+
+  .calculator {
+    border: 1px solid #526ADF;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 0 50px 20px 50px;
+    background-color: white;
+    width: 400px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    transform-style: preserve-3d; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .calculator:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  h1 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  input,
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+  }
+
+  button {
+    background-color: #526ADF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+
+  button:hover {
+    background-color: #526ADF;
+  }
+
+  p {
+    margin-top: 10px;
+    font-size: 1.2em;
+  }
 </style>

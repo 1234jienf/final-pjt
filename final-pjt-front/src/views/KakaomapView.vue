@@ -1,6 +1,6 @@
 <template>
   <article class="search-page">
-    <p class="search-page__title">은행 찾기</p>
+    <h1 class="search-page__title">은행 찾기</h1>
     <div class="search-page__detail">
       <div class="search-page__detail__settings">
         <!-- <input type="text" v-model="keyWord"> -->
@@ -22,7 +22,7 @@
       <div id="map" class="kakao-map" style="width: 1000px; height:500px;"></div>
     </div>
     <div v-show="listItem" id="menu_wrap" class="search-page__list">
-      <ul id="placesList">
+      <ul id="placesList" style="list-style-type: none">
         <div class="search-page__list__items">
           <li class="search-page__list__items__item" v-for="item in listItem" @mouseenter="item.onMouse" @mouseleave="item.onMouseOut">
             <span :class="'markerbg marker_' + item.id">
@@ -239,9 +239,20 @@ onMounted(() => {
 
 
 <style scoped>
+body {
+  background-color: #EAEFFE;
+}
+
 .search-page {
   /* 배경색 */
   background-color: #EAEFFE;
+  margin: auto; /* 페이지를 가운데로 정렬 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
 }
 
 /* 다양한 요소에 사용할 클래스들 */
@@ -251,12 +262,32 @@ onMounted(() => {
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    color: #000000;
+    color: #000000
 }
 
 .search-page__detail {
   background-color: #EAEFFE;
-  /* 다른 스타일 지정 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.search-page__detail__settings {
+  width: 100%;
+  max-width: 1000px;
+  margin: 10px 0;
+}
+
+#map {
+  width: 100%;
+  max-width: 1000px;
+  height: 500px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px 0;
 }
 
 .search-page__detail__settings__input {
@@ -292,6 +323,7 @@ onMounted(() => {
   border-radius: 4px;
   background-color: #ffffff;
   transition: transform 0.2s ease;
+  width: 400px;
 }
 
 .search-page__list__items__item:hover {

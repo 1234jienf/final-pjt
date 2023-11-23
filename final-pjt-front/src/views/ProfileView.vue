@@ -79,6 +79,17 @@
         <button @click="editField('salary')">수정</button>
       </span>
     </p>
+    <p>
+      mbti :
+      <span v-if="editingField === 'mbti'">
+        <input v-model="editValues.mbti"/>
+        <button @click="submitChanges">저장</button>
+      </span>
+      <span v-else>
+        {{ store.userInfo.mbti }}
+        <button @click="editField('mbti')">수정</button>
+      </span>
+    </p>
   </div>
   <br>
   <div class="chart-container">
@@ -102,7 +113,8 @@ email: '',
 nickname: '',
 age: 0,
 money: 0,
-salary: 0
+salary: 0,
+mbti: ''
 })
 
 function editField(field) {

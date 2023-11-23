@@ -26,14 +26,18 @@
         <div class="box">Login</div>
       </RouterLink>
     </div>
-    <nav class="dropdown" :class="{ active: showDropdown }">
-      <RouterLink :to="{ name: 'MainPageView' }" class="nav-link btn-2">홈</RouterLink>
-      <RouterLink :to="{ name: 'DepositView' }" class="nav-link btn-2">정기 예금/적금</RouterLink>
-      <RouterLink :to="{ name: 'CalculatorView' }" class="nav-link btn-2">환율 계산기</RouterLink>
-      <RouterLink :to="{ name: 'KakaomapView' }" class="nav-link btn-2">지도보기</RouterLink>
-      <RouterLink :to="{ name: 'BoardView' }" class="nav-link btn-2">커뮤니티</RouterLink>
-      <RouterLink :to="{ name: 'SurveyView' }" class="nav-link btn-2">성향검사</RouterLink>
-    </nav>
+    <nav>
+      <ul id="list">
+        <li  class="dropdown" :class="{ active: showDropdown }">
+        <RouterLink :to="{ name: 'MainPageView' }" class="nav-link btn-2">홈</RouterLink>
+        <RouterLink :to="{ name: 'DepositView' }" class="nav-link btn-2">정기 예금/적금</RouterLink>
+        <RouterLink :to="{ name: 'CalculatorView' }" class="nav-link btn-2">환율 계산기</RouterLink>
+        <RouterLink :to="{ name: 'KakaomapView' }" class="nav-link btn-2">지도보기</RouterLink>
+        <RouterLink :to="{ name: 'BoardView' }" class="nav-link btn-2">커뮤니티</RouterLink>
+        <RouterLink :to="{ name: 'SurveyView' }" class="nav-link btn-2">성향검사</RouterLink>
+        </li>
+      </ul>
+  </nav>
   </header>
   <RouterView />
 </template>
@@ -64,7 +68,8 @@ window.addEventListener('click', (e) => {
 <style scoped>
 
 .navbar {
-  justify-content: space-between;
+  justify-content: center; /* 탭들을 수평으로 중앙에 배치합니다. */
+
   background-color: #EAEFFE;
   justify-content: center;
   align-items: center;
@@ -82,19 +87,25 @@ window.addEventListener('click', (e) => {
 .dropdown {
   background-color: #EAEFFE;
   height: 40px;
-  display: none; /* Initially hide the dropdown */
+  display: flex; /* Initially hide the dropdown */
   transition: opacity 0.5s ease; /* 투명도 변화에 대한 transition 추가 */
   opacity: 0; /* 처음에는 숨겨진 상태로 설정 */
   pointer-events: none; /* 숨겨진 상태에서 이벤트 비활성화 */
   font-weight: bold;
-  box-shadow:
-    inset 0 0 0 5px rgba(255, 255, 255, 0.6),
-    inset 100px 100px 0 0px #526ADF,
-    inset 200px 200px 0 0px #784ba8,
-    inset 300px 300px 0 0px #526ADF;
- 
+  justify-content: center;
+  align-items: center;
+/* Show the dropdown when active class is applied */
+  backdrop-filter: blur(20px);
+  border-radius: 0 0 20px 20px;
+  /*   border-bottom: 1px solid #ccc; */
+
 }
 
+.dropdown.active {
+  display: flex; /* Show the dropdown when active class is applied */
+  opacity: 7; /* 활성화될 때 투명도 증가 */
+  pointer-events: auto; /* 활성화될 때 이벤트 활성화 */
+}
 
 .card {
   width: 400px;
@@ -110,29 +121,21 @@ window.addEventListener('click', (e) => {
   color: whitesmoke;
 }
 
-.dropdown.active {
-  display: block; /* Show the dropdown when active class is applied */
-  opacity: 5; /* 활성화될 때 투명도 증가 */
-  pointer-events: auto; /* 활성화될 때 이벤트 활성화 */
-}
 .dropdown a {
   color: black;
-  padding: 12px 16px;
+  padding: 0px 16px;
   text-decoration: none;
-  align-items: center; /* 세로 중앙 정렬 */
-  justify-content: center; 
   cursor: pointer;
+  margin: 0 10px; /* 탭 간격을 조절합니다. */
+
 }
 
 .dropdown a:hover {
-  border-radius: 10px; /* hover 시 둥글게 조정되도록 설정 */
+  border-radius: 5px; /* hover 시 둥글게 조정되도록 설정 */
   transform: scale(1.1); /* 확대 효과 */
-  color: black; /* 글자색 변경 */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
-  height: 520px;
+  color: #526ADF; /* 글자색 변경 */
   -webkit-filter: blur(0.1px);
           filter: blur(0.3px);
-
 }
 
 
@@ -170,5 +173,14 @@ window.addEventListener('click', (e) => {
   template {
     font-family: 'Tossface';
   }
+
+
+@font-face {
+  font-family: "Recursive";
+  src: url("https://d33wubrfki0l68.cloudfront.net/0fb48cf42677cf004e48f2608a8521a4ca06b48d/8a39e/assets/fonts/recursive-mono_casl_wght_slnt_ital--2019_11_05-00_13.woff2")
+    format("woff2-variations");
+  font-weight: 300 900;
+  font-display: swap;
+}
 
 </style>
