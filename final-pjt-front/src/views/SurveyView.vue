@@ -1,9 +1,10 @@
 <template>
-    <div>
-      <h2>투자 설문조사</h2>
+    <div class="card1">
+      <div class="profile-info">
+      <h2>MBTI로 나의 투자 성향 알아보기</h2>
   
       <!-- 질문 1 -->
-      <div>
+      <div >
         <h3>1. 처음 투자는 어떻게 하게 됐나요?</h3>
         <div v-for="(answer, index) in firstInvestmentOptions" :key="index">
           <input type="radio" :value="answer.value" v-model="firstInvestmentAnswer" />
@@ -76,7 +77,9 @@
     </div>
   
       <!-- 결과 제출 버튼 -->
-      <button @click="submitSurvey">설문 조사 결과 제출</button>
+      <button @click="submitSurvey" class="btn">
+        <RouterLink :to="{ name: 'MbtiRecommendView' }" class="text-dec">설문조사 결과 제출</RouterLink>          </button>
+    </div>
     </div>
   </template>
   
@@ -146,10 +149,10 @@ const investmentApproachOptions = [
 ]
 const lossHandlingOptions =  [
     { label: '손실을 원하지 않아요(무조건 원금 보전)', value: 'SJ' },
-    { label: '원금의 5 퍼 까지 손실 ㄱㅊ', value: 'J' },
-    { label: '원금의 10퍼까지 손실 ㄱㅊ', value: 'TJ' },
-    { label: '원금의 15퍼까지 손실 ㄱㅊ', value: 'TFP' },
-    { label: '원금의 25퍼까지 손실 ㄱㅊ', value: 'TP' },
+    { label: '원금의 5 퍼 까지의 손실은 괜찮다', value: 'J' },
+    { label: '원금의 10퍼까지 손실은 괜찮다', value: 'TJ' },
+    { label: '원금의 15퍼까지 손실은 괜찮다', value: 'TFP' },
+    { label: '원금의 25퍼까지 손실은 괜찮다', value: 'TP' },
 ]
 
 const submitSurvey = () => {
@@ -255,6 +258,200 @@ ENFJ, INTJ, INFJ, INTP:
 
 
 <style scoped>
-/* 필요한 스타일을 추가하세요 */
-</style>
+
+.profile {
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 5px;
+margin-bottom: 20px;
+
+}
+
+
+h2{
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  font-family: 'SpoqaHanSansNeo-Bold', sans-serif;
+}
+
+.profile-info p:last-child {
+margin-bottom: 0;
+}
+
+.profile-info p span {
+font-weight: bold;
+}
+
+.profile-info p span:last-child {
+font-weight: normal;
+}
+
+.card1{
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(35px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.25);
+  padding: 30px 30px 30px 30px;
+  overflow: hidden;
+  font-family: 'SpoqaHanSansNeo-T', sans-serif;
+
+}
+
+body {
+  background: #1f1f47
+}
+
+.container {
+  min-height: 95vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.btn-2{
+  text-decoration: none;
+  color: #526ADF;
+}
+
+.title {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  font-family: 'SpoqaHanSansNeo-Bold', sans-serif;
+}
+
+.subtitle {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  font-family: 'SpoqaHanSansNeo-Thin', sans-serif;
+  font-size: large;
+}
+
+.btn2 {
+  background: none;
+  border: none;
+  text-align: center;
+  font-size: 1rem;
+  color: whitesmoke;
+  background-color: #fa709a;
+  padding: 0.8rem 1.8rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  cursor: pointer;
+  
+}
+.btn-3 {
+  border: 2px solid #526ADF;
+  background-color: transparent;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-3::before {
+  content: "";
+  position: absolute;
+  background: #526ADF;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  transition: left 0.3s ease-in-out;
+}
+
+
+.btn-3 span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-3:hover {
+  transform: translateY(-5px) translateZ(0);
+  color: #fff;
+}
+.btn3:hover {
+  padding: 0.8rem 1.8rem;
+  border-radius: 2rem;
+  box-shadow: -2px -2px 4px #FFF, 2px 2px 5px #BABECC;
+}
+.btn {
+  background: none;
+  border: none;
+  text-align: center;
+  font-size: 1rem;
+  color: whitesmoke;
+  background-color: #1f1f47;
+  padding: 0.8rem 1.8rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-family: 'SpoqaHanSansNeo-medium', sans-serif;
+  font-size: large;
+}
+
+
+.btn:hover {
+  padding: 0.8rem 1.8rem;
+  border-radius: 2rem;
+  box-shadow: -2px -2px 4px #FFF, 2px 2px 5px #BABECC;
+}
+.blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(
+    180deg,
+    rgba(47, 184, 255,0.42) 31.77%,
+    #5c9df1 100%
+  );
+  mix-blend-mode: color-dodge;
+  -webkit-animation: move 25s infinite alternate;
+          animation: move 25s infinite alternate;
+  transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
+}
+
+.blob:hover {
+  width: 520px;
+  height: 520px;
+  -webkit-filter: blur(30px);
+          filter: blur(30px);
+  box-shadow:
+    inset 0 0 0 5px rgba(255,255,255, 0.6),
+    inset 100px 100px 0 0px #fa709a,
+    inset 200px 200px 0 0px #784ba8,
+    inset 300px 300px 0 0px #2b86c5;
+}
+
+
+.text-dec{
+  text-decoration: none;
+  color: white; /* 글자색 변경 */
+  font-family: 'SpoqaHanSansNeo-Regular', sans-serif;
+  font-size: large;
+}
+
+@-webkit-keyframes move {
+  from {
+    transform: translate(-100px, -50px) rotate(-90deg);
+    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+  }
+
+  to {
+    transform: translate(500px, 100px) rotate(-10deg);
+    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+  }
+}
+
+@keyframes move {
+  from {
+    transform: translate(-100px, -50px) rotate(-90deg);
+    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+  }
+
+  to {
+    transform: translate(500px, 100px) rotate(-10deg);
+    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+  }
+}</style>
   

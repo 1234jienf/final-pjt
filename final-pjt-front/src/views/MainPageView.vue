@@ -12,9 +12,12 @@
     <div class="container">
       <div class="card">
         <h1 class="title">Welcome to Freddit</h1>
-        <p class="subtitle">이제 설명 적어야함..</p>
+        <p class="subtitle">
+"Freddit은 여러분의 최고의 금융 파트너입니다.</p>
+<p class="subtitle">
+ 예금과 적금 상품이 신속한 비교와 추천 기능을 제공하여 여러분의 금융 미래에 대한 명쾌한 결정을 도와드립니다.</p>
         <button class="btn2" @click="scrollDown">
-          <RouterLink :to="{ name: 'SignUpView' }" class="btn-2">
+          <RouterLink :to="{ name: 'SignUpView' }" class="text-dec">
           Freddit 가입하기
         </RouterLink>
       </button>
@@ -43,8 +46,8 @@
         </div>
       </div>
       <div class="down-logo">
-      <button class="box">
-        <RouterLink :to="{ name: 'SurveyView' }" class="nav-link btn-2">내 MBTI로 금융상품 추천받기</RouterLink>
+      <button class="card">
+        <RouterLink :to="{ name: 'SurveyView' }" class="text-dec">내 MBTI로 금융상품 추천받기</RouterLink>
       </button>
     </div>
     </div>
@@ -161,12 +164,18 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
   margin-bottom: 80px; /* 이동된 위치를 제어하기 위해 margin-top을 auto로 설정합니다. */
   align-self: center; /* 수직 가운데 정렬을 위해 중앙 정렬합니다. */
 }
-
+.text-dec{
+  text-decoration: none;
+  color: white; /* 글자색 변경 */
+  font-family: 'SpoqaHanSansNeo-Regular', sans-serif;
+  font-size: large;
+}
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	font-family: "Nunito", sans-serif;
+	font-family: "SpoqaHanSansNeo-Regular", sans-serif;
+  
 }
 
 body {
@@ -182,7 +191,10 @@ body {
   position: relative;
   overflow: hidden;
 }
-
+.btn-2{
+  text-decoration: none;
+  color: #526ADF;
+}
 .card {
   width: 400px;
   min-height: 250px;
@@ -200,11 +212,14 @@ body {
 .title {
   font-size: 2.2rem;
   margin-bottom: 1rem;
+  font-family: 'SpoqaHanSansNeo-Bold', sans-serif;
 }
 
 .subtitle {
   font-size: 1rem;
   margin-bottom: 2rem;
+  font-family: 'SpoqaHanSansNeo-Thin', sans-serif;
+  font-size: large;
 }
 
 .btn2 {
@@ -216,7 +231,43 @@ body {
   background-color: #fa709a;
   padding: 0.8rem 1.8rem;
   border-radius: 2rem;
+  text-decoration: none;
   cursor: pointer;
+  
+}
+.btn-3 {
+  border: 2px solid #526ADF;
+  background-color: transparent;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-3::before {
+  content: "";
+  position: absolute;
+  background: #526ADF;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  transition: left 0.3s ease-in-out;
+}
+
+
+.btn-3 span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-3:hover {
+  transform: translateY(-5px) translateZ(0);
+  color: #fff;
+}
+.btn3:hover {
+  padding: 0.8rem 1.8rem;
+  border-radius: 2rem;
+  box-shadow: -2px -2px 4px #FFF, 2px 2px 5px #BABECC;
 }
 .btn {
   background: none;
@@ -228,8 +279,16 @@ body {
   padding: 0.8rem 1.8rem;
   border-radius: 2rem;
   cursor: pointer;
+  font-family: 'SpoqaHanSansNeo-medium', sans-serif;
+  font-size: large;
 }
 
+
+.btn:hover {
+  padding: 0.8rem 1.8rem;
+  border-radius: 2rem;
+  box-shadow: -2px -2px 4px #FFF, 2px 2px 5px #BABECC;
+}
 .blob {
   position: absolute;
   width: 500px;

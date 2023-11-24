@@ -1,6 +1,6 @@
 <template>
   <div class="board-list">
-    <h3>게시물 목록</h3>
+    <h3>게시물 목록 보기</h3>
     <div class="board-items">
       <BoardListItem 
         v-for="board in store.boards"
@@ -27,6 +27,10 @@ console.log(store.boards)
 
 .board-items {
   display: grid;
-  grid-gap: 20px;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 3px 3px 3px 3px;
+  overflow: hidden;
 }
+
 </style>

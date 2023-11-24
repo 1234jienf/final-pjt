@@ -4,18 +4,20 @@
     <table class="custom-table">
       <thead>
         <tr>
-          <th>Saving ID</th>
-          <th>Company Name</th>
-          <th>Dcls Month</th>
+          <th>예금 ID</th>
+          <th>은행명</th>
+          <th>상품명</th>
+          <th>공시 제출월</th>
           <th>Interest Rate</th>
           <th>Interest Rate 2</th>
-          <th>Save Term</th>
+          <th>예치 기간</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(saving, index) in savings" :key="index" @click="redirectToDetails(saving)">
           <td>{{ saving.fin_prdt_cd }}</td>
           <td>{{ saving.kor_co_nm }}</td>
+          <td>{{ saving.fin_prdt_nm }}</td>
           <td>{{ option.dcls_month }}</td>
           <td>{{ option.intr_rate }}</td>
           <td>{{ option.intr_rate2 }}</td>

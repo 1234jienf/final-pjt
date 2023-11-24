@@ -80,16 +80,50 @@ label {
   font-size: 16px;
 }
 
+*{
+  font-family:'SpoqaHanSansNeo-Medium',sans-serif;
+}
 .btn-submit {
   padding: 8px 15px;
-  background-color: #007bff;
+  background-color: #5a95d4;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: large;
+  font-family:'SpoqaHanSansNeo-Thin',sans-serif;
+
 }
 
 .btn-submit:hover {
   background-color: #0056b3;
+}
+
+.btn-back{
+  background: none;
+  border: none;
+  text-align: center;
+  color: whitesmoke;
+  background-color: #1f1f47;
+  padding: 0.1rem 0.5rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  font-family: 'SpoqaHanSansNeo-Thin', sans-serif;
+  font-size: large;
+  border-radius: 0.1rem;
+}
+
+.btn2 {
+  background: none;
+  border: none;
+  text-align: center;
+  font-size: 1rem;
+  color: whitesmoke;
+  background-color: #fa709a;
+  padding: 0.8rem 1.8rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  cursor: pointer;
+  
 }
 </style>

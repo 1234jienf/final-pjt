@@ -44,16 +44,18 @@ defineProps({
 }
 
 .detail-link {
+  background: none;
   border: none;
-  outline: none;
-  font-size: 10px;
-  border-radius: 20px;
-  background-color: #EBECF0;
-  text-shadow: 1px 1px 0 #FFF;
+  text-align: center;
+  font-size: 1rem;
+  color: whitesmoke;
+  background-color: #1f1f47;
+  padding: 0.1rem 0.5rem;
+  border-radius: 0.2rem;
   cursor: pointer;
-  box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
-  transition: all 0.2s ease-in-out;
-  position: relative;
+  font-family: 'SpoqaHanSansNeo-Thin', sans-serif;
+  font-size: large;
+  text-decoration: none;
 
 }
 

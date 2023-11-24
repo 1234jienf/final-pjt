@@ -1,8 +1,9 @@
 <template>
 
   <div class="login-container">
-    <div class="blob"></div>
+    
     <h1>로그인</h1>
+    <div class="blob"></div>
     <form @submit.prevent="logIn" class="form">
       <label>
         <input type="text" v-model.trim="username" placeholder="UserName" class="input-field">

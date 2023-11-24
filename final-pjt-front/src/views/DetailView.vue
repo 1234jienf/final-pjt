@@ -12,9 +12,11 @@
           </div>
         </div>
         <form @submit.prevent="addComment">
-          <label for="comment">Add Comment:</label>
+          <div class="">
+          <label for="comment"></label>
           <textarea v-model="commentText" id="comment" rows="4" cols="50"></textarea>
-          <button type="submit">Submit</button>
+          <button type="submit" class="btn-submit">댓글쓰기</button>
+        </div>
         </form>
         <!-- Display Comments -->
         <div v-if="comments && comments.length">
@@ -25,10 +27,10 @@
               <span class="comment-date">{{ comment.created_at }}</span>
             </div>
             <p class="comment-content">{{ comment.content }}</p>
-            <button v-if="comment.username === store.userInfo.username" @click="deleteComment(comment.id)">Delete</button>
+            <button v-if="comment.username === store.userInfo.username" @click="deleteComment(comment.id)" class="delete-btn">삭제</button>
           </div>
         </div>
-        <button @click="goBack">게시물 목록 보기</button>
+        <button @click="goBack" class="btn-back">게시물 목록 보기</button>
       </div>
 </template>
   
@@ -209,6 +211,9 @@ padding: 10px;
 margin-bottom: 10px;
 }
 
+*{
+  font-family: 'SpoqaHanSansNeo-Medium',sans-serif ;
+}
 .comment-header {
 display: flex;
 justify-content: space-between;
@@ -226,4 +231,35 @@ color: #888;
 .comment-content {
 margin-top: 5px;
 }
+
+.btn-submit {
+  padding: 8px 15px;
+  background-color: #5a95d4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: large;
+  font-family:'SpoqaHanSansNeo-Thin',sans-serif;
+
+}
+
+.btn-submit:hover {
+  background-color: #0056b3;
+}
+
+.btn-back{
+  background: none;
+  border: none;
+  text-align: center;
+  color: whitesmoke;
+  background-color: #1f1f47;
+  padding: 0.1rem 0.5rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  font-family: 'SpoqaHanSansNeo-Thin', sans-serif;
+  font-size: large;
+  border-radius: 0.1rem;
+}
+
 </style>

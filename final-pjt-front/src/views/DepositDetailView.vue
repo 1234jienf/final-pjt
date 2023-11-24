@@ -12,10 +12,6 @@
         <p><strong>가입방법: </strong>{{ depositDetail.join_way }}</p>
         <p><strong>우대조건: </strong>{{ depositDetail.spcl_cnd }}</p>
       </div>
-      <div>
-        현재 가입중인 상품:
-        {{ store.userInfo.financial_products }}
-      </div>
       <button v-if="isJoined" class="join-button" @click="joinDeposit()">가입해지</button>
       <button v-else class="join-button" @click="joinDeposit()">가입하기</button>    
     </div>

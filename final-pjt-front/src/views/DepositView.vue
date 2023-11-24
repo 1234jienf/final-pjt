@@ -4,10 +4,10 @@
       <nav>
         <div class="box-container">
           <div class="box">
-            <RouterLink :to="{ name: 'DepositView' }">Deposit View</RouterLink>
+            <RouterLink :to="{ name: 'DepositView' }" class="text-dec">Deposit View</RouterLink>
           </div>
           <div class="box">
-            <RouterLink :to="{ name: 'SavingView' }">Saving View</RouterLink>
+            <RouterLink :to="{ name: 'SavingView' }" class="text-dec">Saving View</RouterLink>
           </div>
         </div>
       </nav>
@@ -63,11 +63,21 @@ import { RouterLink } from 'vue-router';
 .box:hover {
   box-shadow: -2px -2px 5px #FFF,  5px #BABECC;
   transform: scale(1.05); /* 확대 효과 */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
 }
 
 .main-content {
   flex: 4;
   padding: 20px;
+}
+
+.text-dec{
+  text-decoration: none;
+  color: #526ADF; /* 글자색 변경 */
+  font-family: 'SpoqaHanSansNeo-Regular', sans-serif;
+  font-size: large;
+}
+
+*{
+  font-family: 'SpoqaHanSansNeo-Regular',sans-serif;
 }
 </style>

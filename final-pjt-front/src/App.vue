@@ -127,7 +127,8 @@ window.addEventListener('click', (e) => {
   text-decoration: none;
   cursor: pointer;
   margin: 0 10px; /* 탭 간격을 조절합니다. */
-
+  font-family: 'SpoqaHanSansNeo-light', sans-serif;
+  font-size: large;
 }
 
 .dropdown a:hover {
@@ -170,17 +171,62 @@ window.addEventListener('click', (e) => {
     border-radius: 5px; /* 원하는 값으로 조정 */
     color: #526ADF;
   }
-  template {
-    font-family: 'Tossface';
-  }
+
+
+
+
+.v-application {
+  font-family: 'Poppins', sans-serif !important;
+}
+@font-face {
+  font-family:'Poppins-Black';
+  src: url('assets/fonts/Poppins-Black.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family:'Poppins-BlackItalic';
+  src: url('assets/fonts/Poppins-BlackItalic.ttf') format('truetype');
+  font-weight: 300;
+}
+@font-face {
+  font-family:'Poppins-Black';
+  src: url('assets/fonts/Poppins-Black.ttf') format('truetype');
+  font-weight: 700;
+}
+
+
+
+.v-application {
+  font-family: 'SpoqaHanSansNeo', sans-serif !important;
+}
+@font-face {
+  font-family:'SpoqaHanSansNeo-Medium';
+  src: url('assets/fonts/SpoqaHanSansNeo-Medium.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family:'SpoqaHanSansNeo-Light';
+  src: url('assets/fonts/SpoqaHanSansNeo-Light.ttf') format('truetype');
+  font-weight: 300;
+}
+@font-face {
+  font-family:'SpoqaHanSansNeo-Regular';
+  src: url('assets/fonts/SpoqaHanSansNeo-Regular.ttf') format('truetype');
+  font-weight: 300;
+}
+
 
 
 @font-face {
-  font-family: "Recursive";
-  src: url("https://d33wubrfki0l68.cloudfront.net/0fb48cf42677cf004e48f2608a8521a4ca06b48d/8a39e/assets/fonts/recursive-mono_casl_wght_slnt_ital--2019_11_05-00_13.woff2")
-    format("woff2-variations");
-  font-weight: 300 900;
-  font-display: swap;
+  font-family:'SpoqaHanSansNeo-Thin';
+  src: url('assets/fonts/SpoqaHanSansNeo-Thin.ttf') format('truetype');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family:'SpoqaHanSansNeo-Bold';
+  src: url('assets/fonts/SpoqaHanSansNeo-Bold.ttf') format('truetype');
+  font-weight: 300;
 }
 
 </style>

@@ -21,12 +21,12 @@
     <table class="custom-table">
       <thead>
         <tr>
-          <th>Saving ID</th>
-          <th>Company Name</th>
-          <th>Dcls Month</th>
+          <th>예금 ID</th>
+          <th>은행명</th>
+          <th>공시 제출월</th>
           <th>Interest Rate</th>
           <th>Interest Rate 2</th>
-          <th>Save Term</th>
+          <th>예치 기간</th>
         </tr>
       </thead>
       <tbody>
@@ -171,8 +171,7 @@ onMounted(fetchData);
 </script>
 
 <style scoped>
-/* 테이블 스타일링 */
-.styled-table {
+/* 테이블 스타일링 */.styled-table {
 border-collapse: collapse;
 margin: 25px 0;
 font-size: 0.9em;
@@ -209,7 +208,18 @@ overflow-y: auto;
 }
 
 .main {
-  background-color:rgb(234, 247, 253);
+  border: none;
+  text-align: center;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+  font-family: 'SpoqaHanSansNeo-Regular', sans-serif;
+  font-size: large;
+}
+
+h1{
+  text-align: center;
+  justify-content: center;
 }
 
 .box {
@@ -235,7 +245,7 @@ overflow-y: auto;
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
-  font-family: Arial, sans-serif;
+  font-family: 'SpoqaHanSansNeo-Bold', sans-serif;
   border: 1px solid #ddd;
 }
 
@@ -257,6 +267,18 @@ overflow-y: auto;
   /* 마우스 호버 시 배경색 변경 */
   background-color: #f9f9f9;
   cursor: pointer;
+}
+
+select {
+  border: none;
+  text-align: center;
+  color: black;
+  background-color: white;
+  padding: 0.1rem 1rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  font-family: 'SpoqaHanSansNeo-Regular', sans-serif;
+  font-size: large;
 }
 
 </style>

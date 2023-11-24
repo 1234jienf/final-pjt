@@ -4,21 +4,22 @@
     <nav>
       <div class="box-container">
         <div class="box">
-          <a href="#">전체 글 보기</a>
+          <a href="" class="text-dec">전체 글 보기</a>
         </div>
         <div class="box">
-          <a href="#">내 글 보기</a>
-        </div>
-      </div>
-      </nav>
-  </div>
-  <div class="board-page">
-    <h1>커뮤니티</h1>
-    <label>
-    <RouterLink :to="{ name: 'CreateView' }" class="create-link ">
+          <RouterLink :to="{ name: 'CreateView' }" class="text-dec ">
       글 작성하기
     </RouterLink>
-  </label>
+          
+        </div>
+      </div>
+
+      </nav>
+  </div>
+
+  
+  <div class="board-page">
+    <h1>커뮤니티</h1>
     <BoardList />
   </div>
 </div>
@@ -60,6 +61,12 @@ onMounted(() => {
   background-color: #f0f0f0;
   border-radius: 10px;
   width: 70%; 
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(35px);
+  padding: 30px 30px 30px 30px;
+  overflow: hidden;
+  
 }
 
 .create-link {
@@ -83,7 +90,9 @@ onMounted(() => {
 .create-link:active {
   box-shadow: inset 1px 1px 2px #c2dfff, inset -1px -1px 2px #FFF;
 }
-
+.a{
+  
+}
 
 label {
   display: block;
@@ -101,23 +110,27 @@ label {
   .box {
     width: 150px;
     height: 50px;
-    background-color: #EAEFFE;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
     border-radius: 1px; /* 원하는 값으로 조정 */
-    color: #c2dfff;
     transition: all 0.2s ease-in-out;
   }
 .box:hover {
   box-shadow: -2px -2px 5px #FFF,  5px #BABECC;
   transform: scale(1.05); /* 확대 효과 */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
 }
 
 .main-content {
   flex: 4;
   padding: 20px;
 }
+.text-dec{
+  text-decoration: none;
+  color: #526ADF; /* 글자색 변경 */
+  font-family: 'SpoqaHanSansNeo-Regular', sans-serif;
+  font-size: large;
+}
+
 </style>

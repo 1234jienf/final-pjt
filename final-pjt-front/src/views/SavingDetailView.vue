@@ -12,14 +12,16 @@
         <p><strong>가입방법: </strong>{{ savingDetail.join_way }}</p>
         <p><strong>우대조건: </strong>{{ savingDetail.spcl_cnd }}</p>
       </div>
-      <button class="join-button" @click="joinDeposit">가입하기</button>
+      <button v-if="isJoined" class="join-button" @click="joinSaving()">가입해지</button>
+      <button v-else class="join-button" @click="joinSaving()">가입하기</button>    
     </div>
-  </div>
+    </div>
+
 </template>
   
   <script setup>
   import axios from 'axios';
-  import { ref, onMounted } from 'vue';
+  import { ref, onMounted,computed } from 'vue';
   import { useCounterStore } from '@/stores/counter';
   import { useRoute } from 'vue-router';
   
@@ -27,36 +29,65 @@
   const savingDetail = ref(null);
   const route = useRoute()
   
-  const fetchSavingDetail = async () => {
-    const savingId = route.params.fin_prdt_cd;
-    console.log(savingId);
-    
-    try {
-      const response = await axios.get(`${store.API_URL}/finlife/saving-detail/${savingId}/`, {
-        headers: {
-          Authorization: `Token ${store.token}`
-        }
-      });
-      savingDetail.value = response.data;
-    } catch (error) {
-      console.error('Error fetching saving details:', error);
-    }
-  };
 
-  const joinDeposit = () => {
-  // 여기서 가입 폼을 처리하는 로직을 추가하세요.
-  // 예시: 가입 폼을 모달이나 새 창으로 띄우거나, 라우터를 통해 다른 페이지로 이동하는 등의 동작을 수행합니다.
-  console.log('가입하기 버튼을 클릭했습니다.');
+  const getUserProductIds = () => {
+  return (store.userInfo.financial_products || '').split(',').map(id => id.trim());
 };
-  
-  onMounted(() => {
-    fetchSavingDetail();
-  });
-  
 
-  </script>
+const isProductAlreadyJoined = (productId) => {
+  const joinedProducts = getUserProductIds();
+  return joinedProducts.includes(productId);
+};
+
+
+const handleJoinButtonClick = (productId) => {
+  if (!isProductAlreadyJoined(productId)) {
+    const updatedProducts = `${store.userInfo.financial_products || ''},${productId}`;
+    store.updateUserInfo('financial_products', updatedProducts);
+    console.log('해당 상품 가입:', productId);
+  } else {
+    const updatedProducts = getUserProductIds().filter(id => id !== productId).join(',');
+    store.updateUserInfo('financial_products', updatedProducts);
+    console.log('해당 상품 해지:', productId);
+  }
+};
+
+const joinSaving = () => {
+  const productId = route.params.fin_prdt_cd;
+  handleJoinButtonClick(productId);
+};
+
+const fetchSavingDetail = async () => {
+  const productId = route.params.fin_prdt_cd;
   
-  <style scoped>
+  try {
+    const response = await axios.get(`${store.API_URL}/finlife/saving-detail/${productId}/`, {
+      headers: {
+        Authorization: `Token ${store.token}`
+      }
+    });
+    savingDetail.value = response.data;
+  } catch (error) {
+    console.error('Error fetching saving details:', error);
+  }
+};
+
+const isJoined = computed(() => {
+  const productId = route.params.fin_prdt_cd;
+  return isProductAlreadyJoined(productId);
+});
+
+onMounted(() => {
+  fetchSavingDetail();
+});
+
+console.log(store.userInfo.financial_products)
+
+console.log(store.userInfo.financial_products)
+
+</script>
+  
+<style scoped>
 .detail {
   font-family: Arial, sans-serif;
   padding: 20px;

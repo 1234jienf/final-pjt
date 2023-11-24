@@ -4,13 +4,13 @@
         <nav>
           <div class="box-container">
             <div class="box">
-              <RouterLink :to="{ name: 'ProfileView' }">기본 정보 수정</RouterLink>
+              <RouterLink :to="{ name: 'ProfileView' }" class="text-dec">기본 정보 수정</RouterLink>
             </div>
             <div class="box">
-              <RouterLink :to="{ name: 'RecommendedProductsView' }">상품 추천받기</RouterLink>
+              <RouterLink :to="{ name: 'RecommendedProductsView' }" class="text-dec">상품 추천받기</RouterLink>
             </div>
             <div class="box">
-              <RouterLink :to="{ name: 'MbtiRecommendView' }">MBTI별 추천 상품</RouterLink>
+              <RouterLink :to="{ name: 'MbtiRecommendView' }" class="text-dec">MBTI별 추천 상품</RouterLink>
             </div>
           </div>
         </nav>
@@ -102,7 +102,7 @@ const redirectToDetail = async (index) => {
   flex-wrap: wrap;
   gap: 20px;
   margin-top: 20px;
-  justify-content: center;
+  
 }
 
 .card {
@@ -116,6 +116,16 @@ const redirectToDetail = async (index) => {
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
+@media screen and (max-width: 768px) {
+  .box-container {
+    gap: 10px;
+    justify-content: space-between;
+  }
+  
+  .box {
+    width: calc(33.33% - 10px);
+  }
+}
 .card:hover {
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -155,9 +165,27 @@ const redirectToDetail = async (index) => {
     }
   .box:hover {
     box-shadow: -2px -2px 5px #FFF,  5px #BABECC;
-    transform: scale(1.05); /* 확대 효과 */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+    transform: scale(1.05); /* 확대 효과 */    
     
-    
-  }</style>
+  }
+
+  *{
+  font-family: 'SpoqaHanSansNeo-Regular', sans-serif;
+  font-size: large;
+}
+h1{
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  font-family: 'SpoqaHanSansNeo-Bold', sans-serif;
+  justify-content: center;
+  align-items: center;
+}
+  
+.text-dec{
+  text-decoration: none;
+  color: black; /* 글자색 변경 */
+  font-family: 'SpoqaHanSansNeo-Regular', sans-serif;
+  font-size: large;
+}
+  </style>
   
