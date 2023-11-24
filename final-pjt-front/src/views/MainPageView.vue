@@ -52,7 +52,13 @@
     </div>
     </div>
   </div>
-
+<footer>
+  <div class="footer">
+    <h3>06220 서울특별시 강남구 테헤란로 212(2층)</h3>
+    <h3>이메일 문의 : wendy6992@naver.com | bae1997@naver.com</h3>
+    <h3>FRONT : 백지윤 | BACK : 배민지</h3>
+  </div>
+</footer>
 </template>
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -339,4 +345,9 @@ body {
     border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
   }
 }
+
+.footer {
+  text-align: center;
+  background-color: #BABECC;
+  }
 </style>
