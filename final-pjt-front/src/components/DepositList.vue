@@ -32,7 +32,7 @@
       <tbody>
         <tr v-for="(seloption, index) in selectedOptions" :key="index" @click="redirectToDetails(seloption)">
           <td>{{ seloption.fin_prdt_cd }}</td>
-          <td>{{  bankList[selectedBank] }}</td>
+          <td>{{ bankList[selectedBank] }}</td>
           <td>{{ seloption.dcls_month }}</td>
           <td>{{ seloption.intr_rate }}</td>
           <td>{{ seloption.intr_rate2 }}</td>
