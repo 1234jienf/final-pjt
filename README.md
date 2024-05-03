@@ -36,8 +36,8 @@
 
 - NavBar를 구현해 홈에서 각각의 페이지로 navigate할 수 있으며, 로그인과 회원가입을 진행할 수 있습니다. 
 - 기본적인 웹에 대한 소개를 위해 호버 및, 애니메이션을 css를 통해 구현했습니다.
-        
-  ![ezgif-3-48d4117438.gif](/final-pjt/final-pjt-front/src/assets/img/main/홈.gif)
+<!--         
+  ![ezgif-3-48d4117438.gif](/final-pjt/final-pjt-front/src/assets/img/main/홈.gif) -->
         
 ## 2.2 정기 예금,적금
 
