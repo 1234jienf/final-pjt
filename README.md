@@ -36,22 +36,21 @@
 
 - NavBar를 구현해 홈에서 각각의 페이지로 navigate할 수 있으며, 로그인과 회원가입을 진행할 수 있습니다. 
 - 기본적인 웹에 대한 소개를 위해 호버 및, 애니메이션을 css를 통해 구현했습니다.
-<!--         
-  ![ezgif-3-48d4117438.gif](/final-pjt/final-pjt-front/src/assets/img/main/홈.gif) -->
-        
-## 2.2 정기 예금,적금
 
-- **영업 시작 전**
+<img src='../final-pjt//final-pjt-front/src/assets/img/main/home.gif'>
+
+## 2.2 정기 예금,적금
 
 - 기본적인 적금, 예금 정보를 프론트엔드 단에서 for each문을 통해 개월수, 은행 이름으로 구분해서 구별하였습니다.
 - 사이드바 구현을 통해 정기 예금, 적금 상품을 확인할 수 있습니다.
-  ![정기예금_적금.gif](/final-pjt/final-pjt-front/src/assets/img/main/정기예금적금.gif)
+
+<img src='../final-pjt//final-pjt-front/src/assets/img/main/정기예금적금.gif'>
 
 ## 2.3 환율계산기
 
 - 환율 계산기를 통해, 자국 화폐에서 각 나라별 화폐로 환율을 계산할 수 있습니다.
 
-![환율계산기.gif](/final-pjt/final-pjt-front/src/assets/img/main/환율계산기.gif)
+<img src='../final-pjt//final-pjt-front/src/assets/img/main/환율계산기.gif'>
 
 
 ## 2.4 지도 보기
@@ -63,7 +62,7 @@
 
 - 간단한 설문지를 라디오 버튼을 이용해 UI를 구성하였고, 해당 번호에 맞는 mbti 성향을 체크하여 본 설문지를 통해 간단하게 mbti를 체크후, 해당 성향을 통해 mbti별 TOP100 금융상품을 추출하여, 상품을 추천하였습니다.
 
-- ![투자성향.gif](/final-pjt/final-pjt-front/src/assets/img/main/투자성향.gif)
+<img src='../final-pjt//final-pjt-front/src/assets/img/main/투자성향.gif'>
 
 ---
 
